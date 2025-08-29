@@ -1,11 +1,11 @@
 services:
   - type: web
-    name: bfhl-api-node
-    env: node
+    name: bfhl-api-python
+    env: python
     plan: free
     region: singapore
-    buildCommand: npm install
-    startCommand: npm start
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
     autoDeploy: true
     envVars:
       - key: FULL_NAME
@@ -17,7 +17,3 @@ services:
       - key: ROLL
         sync: false
     healthCheckPath: /
-    headers:
-      - path: /*
-        name: Access-Control-Allow-Origin
-        value: "*"
