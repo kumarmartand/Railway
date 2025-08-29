@@ -46,6 +46,14 @@ def alternating_caps_from_reversed(chars):
         out.append(ch.upper() if i % 2 == 0 else ch.lower())
     return "".join(out)
 
+@app.get("/")
+def root():
+    return {"status": "BFHL API up"}
+
+@app.get("/health")
+def health():
+    return {"ok": True}
+
 @app.post("/bfhl")
 async def bfhl(request: Request):
     try:
@@ -98,7 +106,3 @@ async def bfhl(request: Request):
             "roll_number": ROLL,
             "message": "An error occurred processing the request.",
         }
-
-@app.get("/")
-def root():
-    return {"status": "BFHL API up"}

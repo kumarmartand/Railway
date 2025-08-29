@@ -16,4 +16,4 @@ services:
         sync: false
       - key: ROLL
         sync: false
-    healthCheckPath: /
+    healthCheckPath: /health
