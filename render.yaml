@@ -1,0 +1,23 @@
+services:
+  - type: web
+    name: bfhl-api-node
+    env: node
+    plan: free
+    region: singapore
+    buildCommand: npm install
+    startCommand: npm start
+    autoDeploy: true
+    envVars:
+      - key: FULL_NAME
+        sync: false
+      - key: DOB_DDMMYYYY
+        sync: false
+      - key: EMAIL
+        sync: false
+      - key: ROLL
+        sync: false
+    healthCheckPath: /
+    headers:
+      - path: /*
+        name: Access-Control-Allow-Origin
+        value: "*"
